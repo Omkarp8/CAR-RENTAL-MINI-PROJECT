@@ -1,6 +1,6 @@
 <h1> CAR-RENTAL-MINI-PROJECT</h1>
 
-<h2>This project is a car rental system designed to streamline the project of rentaling vehicles for customer.It provide a User-friendly interface for both customer and administrtors to use.</h2>
+<h3>This project is a car rental system designed to streamline the project of rentaling vehicles for customer.It provide a User-friendly interface for both customer and administrtors to use.</h3>
 <h2>
   Features :
 </h2>
