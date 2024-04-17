@@ -6,6 +6,7 @@
 </h2>
 <h4>
   <ul>
+    <li>With login option.</li>
     <li>User can view the list of cars.</li>
     <li>User can enter the brand of car want to rent.</li>
     <li>The user enter the date on which will take the car.</li>
