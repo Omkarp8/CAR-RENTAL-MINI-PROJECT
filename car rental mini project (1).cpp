@@ -15,7 +15,7 @@ void billingOpt();
 
 
 //Section login 
-loginIn(char n[10],int pass){
+void loginIn(char n[10],int pass){
 	
 	printf("\n\t\tLOGIN");
 	printf("\n=========================================");
@@ -324,7 +324,7 @@ void billingOpt(){
 	}
 
 
-	payOpt(int choice2,char payment){                  //SECTION IV
+	void payOpt(int choice2,char payment){                  //SECTION IV
 	
 	printf("\n=======================================================");
 		printf("\nPAYMENT OPTION");
