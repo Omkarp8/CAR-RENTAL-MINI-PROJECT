@@ -1,12 +1,14 @@
 #include<stdio.h>
-#include <stdlib.h>
+#include<stdlib.h>
+#include<string.h>
+#include<ctype.h>
 #include<windows.h>
 
 		struct Info{
-		char name[20];
+		char name[50];
 		int age;
 		char choice;
-		int long num[10];
+		char num[10];
 		char suc;
 	};
 void customerInfo();
@@ -21,6 +23,16 @@ void loginIn(char n[10],int pass){
 	printf("\n=========================================");
 	printf("\nEnter username:");
 	scanf("%s",n);
+	int i=0;
+	if(n[i]!='\0'){
+		if(!isalpha(n[i])){
+			
+			printf("\nInvalid name.please Enter correct name");
+			
+			exit(0);
+		}
+		i++;
+	}
 	printf("\nEnter password:");
 	scanf("%d",&pass);
 	if(pass==1234||pass==4321){
@@ -237,7 +249,7 @@ void display(){       //display data section
 	printf("\n=============================================================================");
 	printf("\n\t\t\t***********RECORD*************");
 	printf("\n=============================================================================");
-	fp=fopen("Record1.9.txt","r");
+	fp=fopen("Record2.1.txt","r");
 	fread(&s,sizeof(s),1,fp);
 	printf("\nNAME:%s",s.name);
 	printf("\nAGE:%d",s.age);
@@ -260,9 +272,25 @@ int carAv(int no ,int day){
 void customerInfo(){
 	struct Info s;
 	FILE *fp;
+	printf("\n------------------------------------------------------------");
 	printf("\nPLEASE PROVIDE SOME PERSONAL INFORMATION\n");
+	 
 	printf("\nENTER YOUR NAME:");
 	scanf("%s",s.name);
+	int i=0;
+	if(s.name[i]!='\0'){
+		if(!isalpha(s.name[i])){
+			
+			printf("\nInvalid name.please Enter correct name");
+			
+			customerInfo();
+
+		}
+		i++;
+		
+	}
+//	printf("\nYour name is :%s",s.name);
+	
 	printf("\nENTER YOUR AGE:");
 	scanf("%d",&s.age);
 	if(s.age>=18)
@@ -273,8 +301,34 @@ void customerInfo(){
 		printf("\nWE ARE NOT ALLOW TO RENT A CAR BECAUSE YOU'R UNDER 18");	
 		exit(0);
 	}
-	printf("\nENTER YOUR CORRECT PHONE NUMBER:");
-	scanf("%ld",&s.num);
+	char choice;
+do {
+    printf("\nENTER YOUR CORRECT PHONE NUMBER:");
+    scanf("%s", s.num);
+
+    // Convert the phone number to a string for validation
+ 
+
+    // Check if the length of the phone number is exactly 10 digits
+    int phoneNumberLength = strlen(s.num);
+//    printf("%d",phoneNumberLength);
+    if (phoneNumberLength == 10) {
+        printf("\nValid phone number");
+        break; // Exit the loop if the phone number is valid
+    } else if (phoneNumberLength < 9 || phoneNumberLength > 11) {
+        printf("\nInvalid phone number. Please enter a 10-digit phone number %d",phoneNumberLength);
+        
+    } else {
+        printf("\nPhone number length is neither 10 digits nor outside the valid range. Please re-enter.");
+    }
+
+    printf("\nDo you want to re-enter the phone number? (y/n): ");
+    scanf(" %c", &choice); // Space before %c to consume newline character
+} while (tolower(choice) == 'y');
+
+
+
+
 	
 	printf("\nYOU HAVE DRIVING LICENSE(Y/N):");
 	scanf("%s",&s.choice);
@@ -288,7 +342,7 @@ void customerInfo(){
 		exit(0);
 	}
 	
-	fp= fopen("Record1.9.txt","a");
+	fp= fopen("Record2.1.txt","a");
 	fwrite(&s,sizeof(s),1,fp);
 	fclose(fp);
 	
